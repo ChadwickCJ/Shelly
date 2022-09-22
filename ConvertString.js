@@ -1,6 +1,6 @@
 //Shelly.GetStatus returns multiple objects:
 //ws, wifi, sys, switch:0, script:n (depending on the number of scripts), mqtt, input:0, cloud, and ble.
-//This example retrieves "sys", which contains the time of the system as a string and convert it to a number.
+//This example retrieves "sys", which contains the time of the system as a string and converts it to a number.
 
 function DeviceStatus() {
 Shelly.call("Shelly.GetStatus",
@@ -24,4 +24,4 @@ let TimeObj = JSON.parse(ObjectString);
 print (MyTime, typeof MyTime, TimeObj.TimeNum, typeof TimeObj.TimeNum);
 }
 
-DeviceStatus()
+DeviceStatus();

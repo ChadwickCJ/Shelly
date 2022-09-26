@@ -1,7 +1,7 @@
-//Shelly.GetStatus returns multiple objects:
-//ws, wifi, sys, switch:0, script:n (depending on the number of scripts), mqtt, input:0, cloud, and ble.
-//This example retrieves "sys", which contains the time of the system, every 5 minutes. We also pass
-//userdata into the Timer.set() callback.
+// Shelly.GetStatus returns multiple objects:
+// ws, wifi, sys, switch:0, script:n (depending on the number of scripts), mqtt, input:0, cloud, and ble.
+// This example retrieves "sys", which contains the time of the system, every 5 minutes. We also pass
+// userdata into the Timer.set() callback.
 
 let CONFIG = {
   DeviceId: 0,

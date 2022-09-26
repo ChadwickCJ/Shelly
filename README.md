@@ -5,6 +5,6 @@
  of Shelly microcontrollers and find the need for JavaScript.
  
  This Git is more to help my understanding as I work through the Shelly Script Language Features* to get a  better
- understanding of how they work. Hopefully it will be helpful for others.
+ understanding of how they function. Hopefully it will be helpful for others.
  
  * https://shelly-api-docs.shelly.cloud/gen2/Scripts/ShellyScriptLanguageFeatures/#timer

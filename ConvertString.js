@@ -13,13 +13,13 @@ Shelly.call("Shelly.GetStatus",
             {id: IdNum},
             function (result)
             {
-             SetTime(JSON.parse(JSON.stringify(result.sys)).time);
+             ConvertString(JSON.parse(JSON.stringify(result.sys)).time);
             },
             null
 );
 }
 
-function SetTime(MyTime) {
+function ConvertString(MyTime) {
 let substr1 = MyTime.slice(0, 2);
 let substr2 = MyTime.slice(3, MyTime.length);
 let ObjectString = "{" + chr(34) + "TimeNum" + chr(34) + ":" + substr1 + substr2 + "}";

@@ -1,14 +1,16 @@
 //Shelly.GetStatus returns multiple objects:
 //ws, wifi, sys, switch:0, script:n (depending on the number of scripts), mqtt, input:0, cloud, and ble.
-//This example retrieves "sys", which contains the time of the system, every 5 minutes.
+//This example retrieves "sys", which contains the time of the system, every 5 minutes. We also pass
+//userdata into the Timer.set() callback.
 
 let CONFIG = {
-  GetInterval: 5 * 60 * 1000
+  DeviceId: 0,
+  GetInterval: 5 * 60 * 10
 };
 
-function DeviceStatus() {
+function DeviceStatus(IdNum) {
 Shelly.call("Shelly.GetStatus",
-            {id: 0},
+            {id: IdNum},
             function (result)
             {
              SetTime(JSON.parse(JSON.stringify(result.sys)).time);
@@ -25,4 +27,4 @@ let TimeObj = JSON.parse(ObjectString);
 print (MyTime, typeof MyTime, TimeObj.TimeNum, typeof TimeObj.TimeNum);
 }
 
-Timer.set(CONFIG.GetInterval,true,DeviceStatus,null);
+Timer.set(CONFIG.GetInterval,true,DeviceStatus,CONFIG.DeviceId);

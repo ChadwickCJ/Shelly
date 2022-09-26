@@ -9,7 +9,7 @@ let CONFIG = {
 function DeviceStatus() {
 Shelly.call("Shelly.GetStatus",
             {id: 0},
-            function (result, error_code, error_message)
+            function (result)
             {
              SetTime(JSON.parse(JSON.stringify(result.sys)).time);
             },

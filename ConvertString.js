@@ -5,7 +5,7 @@
 
 let CONFIG = {
   DeviceId: 0,
-  GetInterval: 5 * 60 * 10 //5 minutes as milliseconds
+  GetInterval: 5 * 60 * 1000 //5 minutes as milliseconds
 };
 
 function DeviceStatus(IdNum) {

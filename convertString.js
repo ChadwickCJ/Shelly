@@ -12,7 +12,7 @@ function convertString(theString){
     let objectString = "{\"myNum\":" + stringTheory + "}";
     return JSON.parse(objectString).myNum;
   } else {
-    return 0;
+    return null;
   };
 }
 

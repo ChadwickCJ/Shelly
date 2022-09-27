@@ -9,8 +9,13 @@ function convertString(theString){
     }
   }
   let objectString = "{\"myNum\":" + stringTheory + "}";
-  return JSON.parse(objectString).myNum;
+  if (stringTheory !== "") {
+    return JSON.parse(objectString).myNum;
+  } else {
+    return 0;
+  };
 }
 
 print(convertString("x1we1:23zzz"));
 print(convertString("10034fwsrf346ue5y0"));
+print(convertString("qwerty"));

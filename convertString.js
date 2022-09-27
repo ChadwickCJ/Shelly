@@ -8,8 +8,8 @@ function convertString(theString){
       stringTheory += theString[i];
     }
   }
-  let objectString = "{\"myNum\":" + stringTheory + "}";
   if (stringTheory !== "") {
+    let objectString = "{\"myNum\":" + stringTheory + "}";
     return JSON.parse(objectString).myNum;
   } else {
     return 0;

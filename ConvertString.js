@@ -27,4 +27,13 @@ let TimeObj = JSON.parse(ObjectString);
 print (MyTime, typeof MyTime, TimeObj.TimeNum, typeof TimeObj.TimeNum);
 }
 
+function convertString(MyTime) {
+let StringTheory = MyTime.slice(0, 2);
+StringTheory += MyTime.slice(3, MyTime.length);
+let ObjectString = "{\"" + "TimeNum\":" + StringTheory + "}";
+let TimeObj = JSON.parse(ObjectString);
+print (MyTime, typeof MyTime, TimeObj.TimeNum, typeof TimeObj.TimeNum);
+}
+
 Timer.set(CONFIG.GetInterval,CONFIG.Repeat,DeviceStatus,CONFIG.DeviceId);
+convertString("23:59");

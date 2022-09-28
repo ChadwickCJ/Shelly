@@ -16,7 +16,7 @@ function convertString(theString){
   };
 }
 
-print(convertString("x1we1:23zzz"));
-print(convertString("10034fwsrf346ue5y0"));
+print(convertString("11:23pm"));
+print(convertString("fj1sd2:3%J4h5rt~6{sd7*(sd8fv9cd0f)}"));
 print(convertString("qwerty"));
 print(convertString("Zer0"));

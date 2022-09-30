@@ -10,7 +10,7 @@ let CONFIG = {
   getInterval: 1 * 60 * 1000, //1 minute as milliseconds
   repeat: true,
   deviceId: 0,
-  cloudMinimum: 5,
+  cloudMinimum: 20,
   startDefault: 1145,
   startTime: 1145,
   stopTime: 1400

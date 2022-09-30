@@ -10,7 +10,8 @@ let CONFIG = {
   getInterval: 1 * 60 * 1000, //1 minute as milliseconds
   repeat: true,
   deviceId: 0,
-  cloudMinimum: 20,
+  cloudMinimum: 5,
+  startDefault: 1145,
   startTime: 1145,
   stopTime: 1400
 };
@@ -21,7 +22,7 @@ function deviceStatus(IdNum) {
               function (result)
               {
                let deviceTime = convertString(JSON.parse(JSON.stringify(result.sys)).time);
-               if (isItTime(deviceTime)){
+               if (isItTime(deviceTime)) {
                  print("Time for cloud check!")
                  getClouds();
                  print("Did it still work", CONFIG.startTime);
@@ -33,7 +34,7 @@ function deviceStatus(IdNum) {
   );
 }
 
-function convertString(theString){
+function convertString(theString) {
   let allNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   let stringTheory = "";
   for (let i = 0; i < theString.length; i++) {
@@ -51,7 +52,11 @@ function convertString(theString){
 
 function isItTime(thisTime) {
   print("Start time is:", CONFIG.startTime)
-  return (thisTime > CONFIG.startTime && thisTime <= CONFIG.stopTime);
+  if (thisTime > CONFIG.stopTime) {
+    CONFIG.startTime = CONFIG.startDefault;
+    switchMode(false);
+  }
+  return (thisTime >= CONFIG.startTime && thisTime <= CONFIG.stopTime);
 }
 
 function getClouds() {
@@ -64,7 +69,7 @@ function getClouds() {
                 let expiresTs = result.headers["Expires"];
                 let expiresTm = expiresTs.slice(expiresTs.length - 12, expiresTs.length - 7);
                 print("Cache expires time:", expiresTs, expiresTm);
-                CONFIG.startTime = convertString(expiresTm) + 100; //Add 1 hour for GMT
+                CONFIG.startTime = convertString(expiresTm) + 101; //Add 1 hour for GMT and round up minutes
                 print("Did it work", CONFIG.startTime, convertString(expiresTm))
                 print(currentWeather[0].LocalObservationDateTime);
                 print(currentWeather[0].CloudCover, "%");
@@ -81,7 +86,18 @@ function getClouds() {
   );
 }
 
-function switchMode(mode){
+function TimeZone() {
+  Shelly.call("Shelly.GetConfig",
+              {id: IdNum},
+              function (result)
+              {
+               let tZ= convertString(JSON.parse(JSON.stringify(result.location)).tz);
+              },
+              tZ
+  );
+}
+
+function switchMode(mode) {
   Shelly.call("Switch.set", {'id': CONFIG.deviceId, 'on': mode});
 }
 

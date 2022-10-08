@@ -24,8 +24,9 @@ if (CONFIG.iAmDone) {
   CONFIG.iAmDone = false;
   Timer.clear(timer_handle);
 } else {
-  print("Failed :-(");
+  print("Failed!");
 };
 }
 
+// 100ms will avoid else processing, 25ms is to loop through main() a few times.
 let timer_handle = Timer.set(25, true, main);

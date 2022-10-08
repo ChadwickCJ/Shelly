@@ -1,4 +1,6 @@
 // Example 2 to force synchronous code execution with a timer.
+// Also wondering how "userdata" can be used to pass data from
+// the invoker to the callback function.
 //------------------------------------------------------------
 
 let CONFIG = {
@@ -7,13 +9,13 @@ let CONFIG = {
 };
 
 Shelly.call("Shelly.GetConfig", {id: 0},
-            function (result) {
+            function (result, error_code, error_message, userdata) {
               CONFIG.iAmDone = true;
-              print("In Shelly.GetConfig:", CONFIG.timeZone)
+              print(userdata, CONFIG.timeZone)
               CONFIG.timeZone = JSON.parse(JSON.stringify(result.sys)).location.tz;
               print("Computed timeZone:", CONFIG.timeZone)
             },
-            null
+            "In Shelly.GetConfig:"
 );
 
 function main() {
@@ -26,5 +28,4 @@ if (CONFIG.iAmDone) {
 };
 }
 
-// 100ms will work, 25ms is to loop through main() a few times.
 let timer_handle = Timer.set(25, true, main);

@@ -1,4 +1,4 @@
- // Example 2 to force synchronous code execution with a timer.
+// Example 2 to force synchronous code execution with a timer.
 // Also wondering how "userdata" can be used to pass data from
 // the invoker to the callback function.
 //------------------------------------------------------------

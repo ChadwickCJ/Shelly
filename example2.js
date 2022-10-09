@@ -1,10 +1,11 @@
-// Example 2 to force synchronous code execution with a timer.
+ // Example 2 to force synchronous code execution with a timer.
 // Also wondering how "userdata" can be used to pass data from
 // the invoker to the callback function.
 //------------------------------------------------------------
 
 let CONFIG = {
   iAmDone: false,
+  timer_handle: null,
   timeZone: "Missing",
 };
 
@@ -22,11 +23,11 @@ function main() {
 if (CONFIG.iAmDone) {
   print("Answer from call function:", CONFIG.timeZone);
   CONFIG.iAmDone = false;
-  Timer.clear(timer_handle);
+  Timer.clear(CONFIG.timer_handle);
 } else {
   print("Failed!");
 };
 }
 
 // 100ms will avoid else processing, 25ms is to loop through main() a few times.
-let timer_handle = Timer.set(25, true, main);
+CONFIG.timer_handle = Timer.set(25, true, main);

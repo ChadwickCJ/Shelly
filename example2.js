@@ -20,13 +20,13 @@ Shelly.call("Shelly.GetConfig", {id: 0},
 );
 
 function main() {
-if (CONFIG.iAmDone) {
-  print("Answer from call function:", CONFIG.timeZone);
-  CONFIG.iAmDone = false;
-  Timer.clear(CONFIG.timer_handle);
-} else {
-  print("Failed!");
-};
+  if (CONFIG.iAmDone) {
+    print("Answer from call function:", CONFIG.timeZone);
+    CONFIG.iAmDone = false;
+    Timer.clear(CONFIG.timer_handle);
+  } else {
+    print("Failed!");
+  };
 }
 
 // 100ms will avoid else processing, 25ms is to loop through main() a few times.

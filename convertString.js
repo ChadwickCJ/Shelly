@@ -1,6 +1,6 @@
 // Strips non-numeric characters from a string to return a number, or null.
 
-function convertString(theString){
+function convertString(theString) {
   let allNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   let stringTheory = "";
   for (let i = 0; i < theString.length; i++) {

@@ -18,9 +18,9 @@ function convertNumber(theNumber) {
   }
   
   base10Log = (Math.log(theNumber) / Math.log(10)) + roundingError;
-  numberOfDigits = Math.floor(base10Log);
+  numberOfDigits = Math.floor(base10Log) + 1;
   
-  for (let i = numberOfDigits; i > -1; i--) {
+  for (let i = numberOfDigits - 1; i > -1; i--) {
     singleDigit = Math.floor(theNumber / Math.pow(10, i));
     stringTheory += allNumbers[singleDigit];
     theNumber = theNumber - (singleDigit * Math.pow(10, i));
